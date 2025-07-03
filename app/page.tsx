@@ -14,17 +14,18 @@ const page = () => {
 
       <div className="grid grid-cols-2 gap-5 p-5">
         {/* Job Search Card */}
-        <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
-          <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Search className="w-8 h-8 text-blue-400" />
+        <Link href="/search-worker">
+          <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
+            <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Search className="w-8 h-8 text-blue-400" />
+            </div>
+            <h3 className="text-blue-400 text-sm font-medium h-10 text-center">
+              Jumısshı izlew (Vakanciya)
+            </h3>
           </div>
-          <h3 className="text-blue-400 text-sm font-medium h-10 text-center">
-            Jumısshı izlew (Vakanciya)
-          </h3>
-        </div>
+        </Link>
 
         {/* Resume Card */}
-
         <Link href="/resume">
           <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
             <div className="w-16 h-16 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -37,14 +38,16 @@ const page = () => {
         </Link>
 
         {/* Project Order Card */}
-        <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
-          <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <User className="w-8 h-8 text-yellow-400" />
+        <Link href="/order-project">
+          <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
+            <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <User className="w-8 h-8 text-yellow-400" />
+            </div>
+            <h3 className="text-yellow-400 text-sm font-medium h-10 text-center">
+              Proekt buyırtpa qılıw
+            </h3>
           </div>
-          <h3 className="text-yellow-400 text-sm font-medium h-10 text-center">
-            Proekt buyırtpa qılıw
-          </h3>
-        </div>
+        </Link>
 
         {/* About Us Card */}
         <Link href="/about">
