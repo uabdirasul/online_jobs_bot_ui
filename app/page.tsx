@@ -14,7 +14,7 @@ const page = () => {
 
       <div className="grid grid-cols-2 gap-5 p-5">
         {/* Job Search Card */}
-        <div className="bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
+        <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
           <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-blue-400" />
           </div>
@@ -26,7 +26,7 @@ const page = () => {
         {/* Resume Card */}
 
         <Link href="/resume">
-          <div className="bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
+          <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
             <div className="w-16 h-16 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="w-8 h-8 text-gray-400" />
             </div>
@@ -37,7 +37,7 @@ const page = () => {
         </Link>
 
         {/* Project Order Card */}
-        <div className="bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
+        <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
           <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <User className="w-8 h-8 text-yellow-400" />
           </div>
@@ -48,7 +48,7 @@ const page = () => {
 
         {/* About Us Card */}
         <Link href="/about">
-          <div className="bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
+          <div className="active:scale-95 bg-slate-700/50 rounded-2xl p-6 text-center hover:bg-slate-700/70 transition-colors cursor-pointer">
             <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <HelpCircle className="w-8 h-8 text-red-400" />
             </div>
@@ -60,10 +60,18 @@ const page = () => {
       </div>
 
       <div className="flex items-center justify-center gap-6 mx-4">
-        <a href="https://www.bizler.group/" target="_blank">
+        <a
+          href="https://www.bizler.group/"
+          target="_blank"
+          className="transition-transform active:scale-95"
+        >
           <Image src={BizlerLogo} alt="Bizler logo" className="h-12 w-auto" />
         </a>
-        <a href="https://www.instagram.com/sirius_it_center/" target="_blank">
+        <a
+          href="https://www.instagram.com/sirius_it_center/"
+          target="_blank"
+          className="transition-transform active:scale-95"
+        >
           <Image src={SiriusLogo} alt="Sirius logo" className="h-12 w-auto" />
         </a>
       </div>
