@@ -1,9 +1,12 @@
 import { FileText, HelpCircle, Search, User } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import BizlerLogo from "../public/bizler_logo.png";
+import SiriusLogo from "../public/sirius_logo.png";
 
 const page = () => {
   return (
-    <div className="mt-5 w-[95%] mx-auto flex flex-col justify-around">
+    <div className="mt-5 w-[90%] mx-auto flex flex-col justify-around h-[80vh]">
       <p className="text-center">
         IT Jobs kanalına daǵaza jaylastırıw ushın tómendegi túymege basıń hám
         ondaǵı shablonlardı toltırıw arqalı kanalǵa jiberiń
@@ -54,6 +57,15 @@ const page = () => {
             </h3>
           </div>
         </Link>
+      </div>
+
+      <div className="flex items-center justify-center gap-6 mx-4">
+        <a href="https://www.bizler.group/" target="_blank">
+          <Image src={BizlerLogo} alt="Bizler logo" className="h-12 w-auto" />
+        </a>
+        <a href="https://www.instagram.com/sirius_it_center/" target="_blank">
+          <Image src={SiriusLogo} alt="Sirius logo" className="h-12 w-auto" />
+        </a>
       </div>
     </div>
   );
