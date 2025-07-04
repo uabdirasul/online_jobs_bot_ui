@@ -1,5 +1,7 @@
 "use client";
 
+import FormInput from "@/components/FormInput";
+import FormTextarea from "@/components/FormTextarea";
 import { useState } from "react";
 
 interface FormData {
@@ -38,85 +40,70 @@ const OrderProject = () => {
       {/* Form */}
       <form onSubmit={(e) => e.preventDefault()} className="px-4 space-y-6">
         {/* Name Field */}
-        <fieldset className="border border-white rounded-lg px-4 py-3">
-          <legend className="text-gray-400 text-sm px-2">
-            Buyırtpashı atı
-          </legend>
-          <input
-            type="text"
-            placeholder="Bizler group yáki Ajiniyaz"
-            required
-            minLength={2}
-            maxLength={50}
-            pattern="[A-Za-zА-Яа-яЁё\s]+"
-            title="Tek háripler hám bos orınlar bolıwı múmkin"
-            value={formData.name}
-            onChange={(e) => handleInputChange("name", e.target.value)}
-            className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none border-none p-0"
-          />
-        </fieldset>
+        <FormInput
+          label="Buyırtpashı atı"
+          id="name"
+          type="text"
+          placeholder="Bizler group yáki Ajiniyaz"
+          required
+          minLength={2}
+          maxLength={50}
+          pattern="[A-Za-zА-Яа-яЁё\s]+"
+          value={formData.name}
+          onChange={(e) => handleInputChange("name", e.target.value)}
+        />
 
         {/* Type Field */}
-        <fieldset className="border border-white rounded-lg px-4 py-3">
-          <legend className="text-gray-400 text-sm px-2">Proyekt-túri</legend>
-          <input
-            type="text"
-            placeholder="Web sayt, mobil app, dizayn, h.t.b."
-            required
-            minLength={3}
-            maxLength={100}
-            value={formData.type}
-            onChange={(e) => handleInputChange("type", e.target.value)}
-            className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none border-none p-0"
-          />
-        </fieldset>
+        <FormInput
+          label="Proyekt-túri"
+          id="type"
+          type="text"
+          placeholder="Web sayt, mobil app, dizayn, h.t.b."
+          required
+          minLength={3}
+          maxLength={100}
+          value={formData.type}
+          onChange={(e) => handleInputChange("type", e.target.value)}
+        />
 
         {/* Skills Field */}
-        <fieldset className="border border-white rounded-lg px-4 py-3">
-          <legend className="text-gray-400 text-sm px-2">
-            Proyekt haqqında maǵlıwmat
-          </legend>
-          <textarea
-            placeholder="HTML5, CSS3, python, javascript, typescript yaki Photoshop, Premiere pro, After effects"
-            required
-            minLength={3}
-            maxLength={500}
-            value={formData.description}
-            onChange={(e) => handleInputChange("description", e.target.value)}
-            rows={4}
-            className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none border-none p-0 resize-none"
-          />
-        </fieldset>
+        <FormTextarea
+          label="Proyekt haqqında maǵlıwmat"
+          id="description"
+          placeholder="HTML5, CSS3, python, javascript, typescript yaki Photoshop, Premiere pro, After effects"
+          required
+          minLength={3}
+          maxLength={500}
+          value={formData.description}
+          onChange={(e) => handleInputChange("description", e.target.value)}
+          rows={4}
+        />
 
         {/* Budget Field */}
-        <fieldset className="border border-white rounded-lg px-4 py-3">
-          <legend className="text-gray-400 text-sm px-2">Budjet</legend>
-          <input
-            type="text"
-            placeholder="Nokis qalasi, A. Dosnazarov 89"
-            required
-            minLength={5}
-            maxLength={200}
-            value={formData.budget}
-            onChange={(e) => handleInputChange("budget", e.target.value)}
-            className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none border-none p-0"
-          />
-        </fieldset>
+        <FormInput
+          label="Budjet"
+          id="budget"
+          type="text"
+          placeholder="Nokis qalasi, A. Dosnazarov 89"
+          required
+          minLength={5}
+          maxLength={200}
+          value={formData.budget}
+          onChange={(e) => handleInputChange("budget", e.target.value)}
+        />
 
         {/* Contact Field */}
-        <fieldset className="border border-white rounded-lg px-4 py-3">
-          <legend className="text-gray-400 text-sm px-2">Baylanıs</legend>
-          <input
-            type="text"
-            placeholder="Telefon nomeri, telegram, email"
-            required
-            minLength={5}
-            maxLength={100}
-            value={formData.contact}
-            onChange={(e) => handleInputChange("contact", e.target.value)}
-            className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none border-none p-0"
-          />
-        </fieldset>
+        <FormInput
+          label="Baylanıs"
+          id="contact"
+          type="text"
+          placeholder="Telefon nomeri, telegram, email"
+          required
+          minLength={5}
+          maxLength={100}
+          value={formData.contact}
+          onChange={(e) => handleInputChange("contact", e.target.value)}
+        />
 
         <div className="flex flex-col items-center mb-10">
           <p className="text-[#38bdf8] mb-3">
