@@ -22,7 +22,7 @@ const FormTextarea = ({
   rows = 4
 }: FormTextareaProps) => {
   return (
-    <fieldset className="border border-white rounded-lg px-4 py-3">
+    <fieldset className="border border-white rounded-lg px-4 py-3 focus-within:border-blue-400 transition-colors duration-200">
       <legend className="text-gray-400 text-sm px-2">
         <label className="cursor-pointer" htmlFor={id}>
           {label}
