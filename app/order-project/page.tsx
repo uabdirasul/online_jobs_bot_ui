@@ -29,7 +29,7 @@ const OrderProject = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="text-white">
       {/* Header */}
       <div className="px-4 py-4">
         <h1 className="text-blue-400 text-lg font-medium mt-4">
