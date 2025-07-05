@@ -22,8 +22,8 @@ const FormTextarea = ({
   rows = 4
 }: FormTextareaProps) => {
   return (
-    <fieldset className="border border-white rounded-lg px-4 py-3 focus-within:border-blue-400 transition-colors duration-200">
-      <legend className="text-gray-400 text-sm px-2">
+    <fieldset className="border border-gray-400 dark:border-white rounded-lg px-4 py-3 focus-within:border-blue-600 dark:focus-within:border-blue-400 transition-colors duration-200">
+      <legend className="text-gray-800 dark:text-gray-400 text-sm px-2">
         <label className="cursor-pointer" htmlFor={id}>
           {label}
         </label>
@@ -37,7 +37,7 @@ const FormTextarea = ({
         value={value}
         onChange={onChange}
         rows={rows}
-        className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none border-none p-0 resize-none"
+        className="w-full bg-white dark:bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none border-none p-0 resize-none"
       />
     </fieldset>
   );

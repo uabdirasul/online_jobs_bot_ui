@@ -1,7 +1,7 @@
 "use client";
 import FormInput from "@/components/FormInput";
 import FormTextarea from "@/components/FormTextarea";
-import LoadingIcon from "@/components/LoadingIcon";
+import SendFormButton from "@/components/SendFormButton";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
@@ -99,7 +99,7 @@ export default function ResumeForm() {
     {
       type: "input",
       props: {
-        label: "Atiniz",
+        label: "Atıńız",
         id: "name",
         type: "text",
         placeholder: "Ajiniyaz",
@@ -114,7 +114,7 @@ export default function ResumeForm() {
     {
       type: "input",
       props: {
-        label: "Kasibiniz",
+        label: "Kásibińiz",
         id: "profession",
         type: "text",
         placeholder: "Programmist, dizayner, rejissyor t.b",
@@ -240,7 +240,7 @@ export default function ResumeForm() {
     <div className="text-white">
       {/* Header */}
       <div className="px-4 py-4">
-        <h1 className="text-blue-400 text-lg font-medium mt-4">
+        <h1 className="text-blue-800 dark:text-blue-400 text-lg font-medium mt-4">
           Rezyume forması
         </h1>
       </div>
@@ -276,22 +276,7 @@ export default function ResumeForm() {
           return null;
         })}
 
-        <div className="flex flex-col items-center mb-10">
-          <p className="text-[#38bdf8] mb-3">
-            Aǵza bolıw arqalı siz qupıyalıq siyasatı menen paydalanıw shártlerin
-            qabıl etesiz
-          </p>
-          <button
-            type="submit"
-            className="w-fit bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors px-2 flex items-center justify-center min-w-[150px]"
-            disabled={mutation.isPending}
-          >
-            {mutation.isPending && <LoadingIcon />}
-            {mutation.isPending
-              ? "Arza jiberilip atır"
-              : "Kanalǵa arza jiberiw"}
-          </button>
-        </div>
+        <SendFormButton mutation={mutation} />
       </form>
     </div>
   );

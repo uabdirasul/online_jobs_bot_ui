@@ -1,11 +1,11 @@
 const About = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-white px-4 my-5">
-      <div className="max-w-xl w-full bg-slate-700/60 rounded-2xl p-8 shadow-lg">
-        <h2 className="text-2xl font-bold text-blue-400 mb-6 text-center">
+    <div className="flex flex-col items-center justify-center text-gray-800 dark:text-white px-4 my-5">
+      <div className="max-w-xl w-full bg-white dark:bg-slate-700/60 rounded-2xl p-8 shadow-lg">
+        <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 text-center">
           Biz haqqımızda
         </h2>
-        <div className="text-base space-y-5 text-gray-200 text-center">
+        <div className="text-base space-y-5 text-gray-700 dark:text-gray-200 text-center">
           <p>
             Bizler Group kompaniyası 2020 jıldan baslap hár túrli IT-ónimlerin
             islep shıģarıw menen shuģıllanadı. Yaģnıy tutınıwshılardıń
@@ -27,17 +27,18 @@ const About = () => {
             Forum, Hakaton, Ideaton, Meet-up, Workshoplar h.t.b kóplegen
             is-ilajlardı shólkemlestiriwde BIYPUL járdem kórsetti.
           </p>
-          <div className="bg-slate-800/70 rounded-lg p-4 text-sm text-white space-y-4">
+
+          <div className="bg-gray-100 dark:bg-slate-800/70 rounded-lg p-4 text-sm space-y-4 text-left">
             {/* Socials */}
-            <div className="bg-slate-700/50 rounded-md p-3">
-              <div className="font-semibold text-blue-300 mb-2">
+            <div className="bg-gray-200 dark:bg-slate-700/50 rounded-md p-3">
+              <div className="font-semibold text-blue-600 dark:text-blue-300 mb-2">
                 🌐 Sociallıq joybarlar
               </div>
               <ul className="space-y-1">
                 <li>
                   <a
                     href="https://t.me/startup_jaslar"
-                    className="underline hover:text-blue-400"
+                    className="underline hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     @startup_jaslar
                   </a>
@@ -45,7 +46,7 @@ const About = () => {
                 <li>
                   <a
                     href="https://t.me/sabaqliqlar_bot"
-                    className="underline hover:text-blue-400"
+                    className="underline hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     @sabaqliqlar_bot
                   </a>
@@ -53,7 +54,7 @@ const About = () => {
                 <li>
                   <a
                     href="https://t.me/freelancers_kr"
-                    className="underline hover:text-blue-400"
+                    className="underline hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     @freelancers_kr
                   </a>
@@ -62,28 +63,28 @@ const About = () => {
             </div>
 
             {/* IT Academy */}
-            <div className="bg-slate-700/50 rounded-md p-3">
-              <div className="font-semibold text-blue-300 mb-2">
+            <div className="bg-gray-200 dark:bg-slate-700/50 rounded-md p-3">
+              <div className="font-semibold text-blue-600 dark:text-blue-300 mb-2">
                 💻 IT akademiyamız
               </div>
               <a
                 href="https://t.me/GrowWithSirius"
-                className="underline hover:text-blue-400"
+                className="underline hover:text-blue-500 dark:hover:text-blue-400"
               >
                 @GrowWithSirius
               </a>
             </div>
 
             {/* Portfolio & Contact */}
-            <div className="bg-slate-700/50 rounded-md p-3">
-              <div className="font-semibold text-blue-300 mb-2">
+            <div className="bg-gray-200 dark:bg-slate-700/50 rounded-md p-3">
+              <div className="font-semibold text-blue-600 dark:text-blue-300 mb-2">
                 📁 Portfolio hám kontaktlar
               </div>
               <ul className="space-y-1">
                 <li>
                   <a
                     href="https://www.bizler.group"
-                    className="underline hover:text-blue-400"
+                    className="underline hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     www.bizler.group
                   </a>
@@ -91,7 +92,7 @@ const About = () => {
                 <li>
                   <a
                     href="https://t.me/bizler_portfolio"
-                    className="underline hover:text-blue-400"
+                    className="underline hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     @bizler_portfolio
                   </a>
@@ -99,7 +100,7 @@ const About = () => {
                 <li>
                   <a
                     href="tel:+998906601020"
-                    className="underline hover:text-blue-400"
+                    className="underline hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     90-660-10-20
                   </a>
@@ -112,4 +113,5 @@ const About = () => {
     </div>
   );
 };
+
 export default About;
