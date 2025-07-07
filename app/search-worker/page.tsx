@@ -4,7 +4,7 @@ import FormTextarea from "@/components/FormTextarea";
 import SendFormButton from "@/components/SendFormButton";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface FormData {
   company: string;
@@ -32,22 +32,26 @@ export default function SearchWorker() {
 
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [initData, setInitData] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
+      setInitData(window.Telegram.WebApp.initData || null);
+    }
+  }, []);
 
   // API call function
   const postWorker = async (data: FormData) => {
-    const telegramInitData = (window as any).Telegram?.WebApp?.initData;
-    if (telegramInitData) {
-      data.init_data = telegramInitData;
+    if (initData) {
+      data.init_data = initData;
     }
-    const params = new URLSearchParams();
-    Object.entries(data).forEach(([key, value]) => {
-      params.append(key, value.toString());
-    });
+
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/find-worker/`,
-      params,
-      { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+      data,
+      { headers: { "Content-Type": "application/json" } }
     );
+
     return response.data;
   };
 
