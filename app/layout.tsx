@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import type { Metadata } from "next";
