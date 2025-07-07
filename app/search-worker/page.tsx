@@ -9,18 +9,25 @@ import { useState } from "react";
 interface FormData {
   company: string;
   position: string;
+  address: string;
   requirements: string;
+  working_time: string;
+  additional: string;
   salary: string;
-  contact: string;
+  contacts: string;
+  init_data?: string;
 }
 
 export default function SearchWorker() {
   const [formData, setFormData] = useState<FormData>({
     company: "",
     position: "",
+    address: "",
     requirements: "",
+    working_time: "",
+    additional: "",
     salary: "",
-    contact: ""
+    contacts: ""
   });
 
   const [successMsg, setSuccessMsg] = useState("");
@@ -28,6 +35,10 @@ export default function SearchWorker() {
 
   // API call function
   const postWorker = async (data: FormData) => {
+    const telegramInitData = (window as any).Telegram?.WebApp?.initData;
+    if (telegramInitData) {
+      data.init_data = telegramInitData;
+    }
     const params = new URLSearchParams();
     Object.entries(data).forEach(([key, value]) => {
       params.append(key, value.toString());
@@ -48,9 +59,12 @@ export default function SearchWorker() {
       setFormData({
         company: "",
         position: "",
+        address: "",
         requirements: "",
+        working_time: "",
+        additional: "",
         salary: "",
-        contact: ""
+        contacts: ""
       });
     },
     onError: (error: any) => {
@@ -110,6 +124,20 @@ export default function SearchWorker() {
       }
     },
     {
+      type: "input",
+      props: {
+        label: "Mánzil",
+        id: "address",
+        type: "text",
+        placeholder: "Nókis qalası, A.Dosnazarov 89",
+        required: true,
+        minLength: 3,
+        maxLength: 100,
+        value: formData.address,
+        onChange: (e) => handleInputChange("address", e.target.value)
+      }
+    },
+    {
       type: "textarea",
       props: {
         label: "Talaplar",
@@ -121,6 +149,34 @@ export default function SearchWorker() {
         maxLength: 500,
         value: formData.requirements,
         onChange: (e) => handleInputChange("requirements", e.target.value),
+        rows: 4
+      }
+    },
+    {
+      type: "input",
+      props: {
+        label: "Jumıs waqtı",
+        id: "working_time",
+        type: "text",
+        placeholder: "Háptede 5 kún, 9:00 - 18:00, h.t.b.",
+        required: true,
+        minLength: 3,
+        maxLength: 500,
+        value: formData.working_time,
+        onChange: (e) => handleInputChange("working_time", e.target.value)
+      }
+    },
+    {
+      type: "textarea",
+      props: {
+        label: "Qosımsha",
+        id: "additional",
+        placeholder: "...",
+        required: true,
+        minLength: 3,
+        maxLength: 500,
+        value: formData.additional,
+        onChange: (e) => handleInputChange("additional", e.target.value),
         rows: 4
       }
     },
@@ -142,14 +198,14 @@ export default function SearchWorker() {
       type: "input",
       props: {
         label: "Baylanıs",
-        id: "contact",
+        id: "contacts",
         type: "text",
         placeholder: "Telefon nomeri, telegram, email",
         required: true,
         minLength: 5,
         maxLength: 100,
-        value: formData.contact,
-        onChange: (e) => handleInputChange("contact", e.target.value)
+        value: formData.contacts,
+        onChange: (e) => handleInputChange("contacts", e.target.value)
       }
     }
   ];

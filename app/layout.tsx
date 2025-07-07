@@ -25,17 +25,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isTelegramAvailable =
+    typeof window !== "undefined" && (window as any).Telegram?.WebApp;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute={"class"} defaultTheme="system">
-          <ReactQueryProvider>
-            <Navbar />
-            {children}
-          </ReactQueryProvider>
-        </ThemeProvider>
+        {isTelegramAvailable && (
+          <ThemeProvider attribute={"class"} defaultTheme="system">
+            <ReactQueryProvider>
+              <Navbar />
+              {children}
+            </ReactQueryProvider>
+          </ThemeProvider>
+        )}
       </body>
     </html>
   );

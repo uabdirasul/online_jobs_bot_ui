@@ -17,6 +17,7 @@ interface FormData {
   expected_salary: string;
   dream: string;
   contact: string;
+  init_data?: string;
 }
 
 export default function ResumeForm() {
@@ -38,6 +39,11 @@ export default function ResumeForm() {
 
   // API call function
   const sendResume = async (data: FormData) => {
+    const telegramInitData = (window as any).Telegram?.WebApp?.initData;
+    if (telegramInitData) {
+      data.init_data = telegramInitData;
+    }
+
     const params = new URLSearchParams();
     Object.entries(data).forEach(([key, value]) => {
       params.append(key, value.toString());

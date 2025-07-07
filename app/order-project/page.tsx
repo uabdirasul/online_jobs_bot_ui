@@ -8,20 +8,21 @@ import axios from "axios";
 import { useState } from "react";
 
 interface FormData {
-  client_name: string;
-  project_type: string;
-  description: string;
+  specialist: string;
+  task: string;
+  additional: string;
   budget: string;
-  contact: string;
+  contacts: string;
+  init_data?: string;
 }
 
 const OrderProject = () => {
   const [formData, setFormData] = useState<FormData>({
-    client_name: "",
-    project_type: "",
-    description: "",
+    specialist: "",
+    task: "",
+    additional: "",
     budget: "",
-    contact: ""
+    contacts: ""
   });
 
   const [successMsg, setSuccessMsg] = useState("");
@@ -29,6 +30,11 @@ const OrderProject = () => {
 
   // API call function
   const orderProject = async (data: FormData) => {
+    const telegramInitData = (window as any).Telegram?.WebApp?.initData;
+    if (telegramInitData) {
+      data.init_data = telegramInitData;
+    }
+
     const params = new URLSearchParams();
     Object.entries(data).forEach(([key, value]) => {
       params.append(key, value.toString());
@@ -47,11 +53,11 @@ const OrderProject = () => {
       setSuccessMsg("Arza jiberildi! (Successfully sent)");
       setErrorMsg("");
       setFormData({
-        client_name: "",
-        project_type: "",
-        description: "",
+        specialist: "",
+        task: "",
+        additional: "",
         budget: "",
-        contact: ""
+        contacts: ""
       });
     },
     onError: (error: any) => {
@@ -86,43 +92,43 @@ const OrderProject = () => {
       type: "input",
       props: {
         label: "Buyırtpashı atı",
-        id: "name",
+        id: "specialist",
         type: "text",
         placeholder: "Bizler group yáki Ajiniyaz",
         required: true,
         minLength: 2,
         maxLength: 50,
         pattern: "[A-Za-zА-Яа-яЁёs]+",
-        value: formData.client_name,
-        onChange: (e) => handleInputChange("client_name", e.target.value)
+        value: formData.specialist,
+        onChange: (e) => handleInputChange("specialist", e.target.value)
       }
     },
     {
       type: "input",
       props: {
         label: "Proyekt-túri",
-        id: "type",
+        id: "task",
         type: "text",
         placeholder: "Web sayt, mobil app, dizayn, h.t.b.",
         required: true,
         minLength: 3,
         maxLength: 100,
-        value: formData.project_type,
-        onChange: (e) => handleInputChange("project_type", e.target.value)
+        value: formData.task,
+        onChange: (e) => handleInputChange("task", e.target.value)
       }
     },
     {
       type: "textarea",
       props: {
         label: "Proyekt haqqında maǵlıwmat",
-        id: "description",
+        id: "additional",
         placeholder:
           "HTML5, CSS3, python, javascript, typescript yaki Photoshop, Premiere pro, After effects",
         required: true,
         minLength: 3,
         maxLength: 500,
-        value: formData.description,
-        onChange: (e) => handleInputChange("description", e.target.value),
+        value: formData.additional,
+        onChange: (e) => handleInputChange("additional", e.target.value),
         rows: 4
       }
     },
@@ -144,14 +150,14 @@ const OrderProject = () => {
       type: "input",
       props: {
         label: "Baylanıs",
-        id: "contact",
+        id: "contacts",
         type: "text",
         placeholder: "Telefon nomeri, telegram, email",
         required: true,
         minLength: 5,
         maxLength: 100,
-        value: formData.contact,
-        onChange: (e) => handleInputChange("contact", e.target.value)
+        value: formData.contacts,
+        onChange: (e) => handleInputChange("contacts", e.target.value)
       }
     }
   ];
