@@ -20,6 +20,18 @@ interface FormData {
   init_data?: string;
 }
 
+interface TelegramWebApp {
+  initData: string;
+}
+
+interface TelegramWindow extends Window {
+  Telegram?: {
+    WebApp: TelegramWebApp;
+  };
+}
+
+const telegramWindow = window as TelegramWindow;
+
 export default function ResumeForm() {
   const [formData, setFormData] = useState<FormData>({
     full_name: "",
@@ -39,8 +51,8 @@ export default function ResumeForm() {
   const [initData, setInitData] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
-      setInitData(window.Telegram.WebApp.initData || null);
+    if (typeof window !== "undefined" && telegramWindow.Telegram?.WebApp) {
+      setInitData(telegramWindow.Telegram.WebApp.initData || null);
     }
   }, []);
 
