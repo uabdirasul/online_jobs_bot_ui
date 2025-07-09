@@ -8,15 +8,15 @@ import { useEffect, useState } from "react";
 
 interface FormData {
   full_name: string;
-  profession: string;
   age: number;
-  location: string;
+  profession: string;
+  address: string;
   skills: string;
   experience: string;
+  salary: string;
+  goal: string;
+  contacts: string;
   portfolio: string;
-  expected_salary: string;
-  dream: string;
-  contact: string;
   init_data?: string;
 }
 
@@ -30,20 +30,18 @@ interface TelegramWindow extends Window {
   };
 }
 
-const telegramWindow = window as TelegramWindow;
-
 export default function ResumeForm() {
   const [formData, setFormData] = useState<FormData>({
     full_name: "",
     profession: "",
     age: 0,
-    location: "",
+    address: "",
     skills: "",
     experience: "",
     portfolio: "",
-    expected_salary: "",
-    dream: "",
-    contact: ""
+    salary: "",
+    goal: "",
+    contacts: ""
   });
 
   const [successMsg, setSuccessMsg] = useState("");
@@ -51,6 +49,8 @@ export default function ResumeForm() {
   const [initData, setInitData] = useState<string | null>(null);
 
   useEffect(() => {
+    const telegramWindow = window as TelegramWindow;
+
     if (typeof window !== "undefined" && telegramWindow.Telegram?.WebApp) {
       setInitData(telegramWindow.Telegram.WebApp.initData || null);
     }
@@ -80,13 +80,13 @@ export default function ResumeForm() {
         full_name: "",
         profession: "",
         age: 0,
-        location: "",
+        address: "",
         skills: "",
         experience: "",
         portfolio: "",
-        expected_salary: "",
-        dream: "",
-        contact: ""
+        salary: "",
+        goal: "",
+        contacts: ""
       });
     },
     onError: (error: any) => {
@@ -120,14 +120,14 @@ export default function ResumeForm() {
     {
       type: "input",
       props: {
-        label: "Atıńız",
+        label: "Tolıq atıńız",
         id: "name",
         type: "text",
         placeholder: "Ajiniyaz",
         required: true,
         minLength: 2,
         maxLength: 50,
-        pattern: "[A-Za-zА-Яа-яЁёs]+",
+        pattern: "[A-Za-zА-Яа-яЁёÀ-ÿ'’\\- ]{2,100}",
         value: formData.full_name,
         onChange: (e) => handleInputChange("full_name", e.target.value)
       }
@@ -164,14 +164,14 @@ export default function ResumeForm() {
       type: "input",
       props: {
         label: "Mánzilińiz",
-        id: "location",
+        id: "address",
         type: "text",
         placeholder: "Nokis qalasi, A. Dosnazarov 89",
         required: true,
         minLength: 5,
         maxLength: 200,
-        value: formData.location,
-        onChange: (e) => handleInputChange("location", e.target.value)
+        value: formData.address,
+        onChange: (e) => handleInputChange("address", e.target.value)
       }
     },
     {
@@ -218,26 +218,27 @@ export default function ResumeForm() {
       type: "input",
       props: {
         label: "Kútilip atırǵan aylıq dáramat",
-        id: "expected_salary",
+        id: "salary",
         type: "string",
         placeholder: "500$ yáki 2 000 000 swm, h.t.b.",
         required: true,
         minLength: 0,
-        value: formData.expected_salary || "",
-        onChange: (e) => handleInputChange("expected_salary", e.target.value)
+        maxLength: 100,
+        value: formData.salary || "",
+        onChange: (e) => handleInputChange("salary", e.target.value)
       }
     },
     {
       type: "textarea",
       props: {
         label: "Máqsetińiz",
-        id: "dream",
+        id: "goal",
         minLength: 3,
         maxLength: 500,
         required: true,
         placeholder: "Bilimlerimdi ele de tereńlestirejaqpan",
-        value: formData.dream,
-        onChange: (e) => handleInputChange("dream", e.target.value),
+        value: formData.goal,
+        onChange: (e) => handleInputChange("goal", e.target.value),
         rows: 3
       }
     },
@@ -245,14 +246,14 @@ export default function ResumeForm() {
       type: "input",
       props: {
         label: "Baylanıs",
-        id: "contact",
+        id: "contacts",
         type: "text",
         placeholder: "Telefon nomeri, telegram, email",
         required: true,
         minLength: 5,
         maxLength: 100,
-        value: formData.contact,
-        onChange: (e) => handleInputChange("contact", e.target.value)
+        value: formData.contacts,
+        onChange: (e) => handleInputChange("contacts", e.target.value)
       }
     }
   ];

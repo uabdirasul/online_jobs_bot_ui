@@ -26,8 +26,6 @@ interface TelegramWindow extends Window {
   };
 }
 
-const telegramWindow = window as TelegramWindow;
-
 const OrderProject = () => {
   const [formData, setFormData] = useState<FormData>({
     specialist: "",
@@ -42,6 +40,8 @@ const OrderProject = () => {
   const [initData, setInitData] = useState<string | null>(null);
 
   useEffect(() => {
+    const telegramWindow = window as TelegramWindow;
+
     if (typeof window !== "undefined" && telegramWindow.Telegram?.WebApp) {
       setInitData(telegramWindow.Telegram.WebApp.initData || null);
     }
@@ -113,7 +113,7 @@ const OrderProject = () => {
         required: true,
         minLength: 2,
         maxLength: 50,
-        pattern: "[A-Za-zА-Яа-яЁёs]+",
+        pattern: "[A-Za-zА-Яа-яЁёÀ-ÿ'’\\- ]{2,100}",
         value: formData.specialist,
         onChange: (e) => handleInputChange("specialist", e.target.value)
       }
@@ -138,7 +138,7 @@ const OrderProject = () => {
         label: "Proyekt haqqında maǵlıwmat",
         id: "additional",
         placeholder:
-          "HTML5, CSS3, python, javascript, typescript yaki Photoshop, Premiere pro, After effects",
+          "Reactte web sayt qılıw kerek, kitapshanı awdarmalaw kerek, h.t.b.",
         required: true,
         minLength: 3,
         maxLength: 500,
@@ -153,9 +153,9 @@ const OrderProject = () => {
         label: "Budjet",
         id: "budget",
         type: "text",
-        placeholder: "Nokis qalasi, A. Dosnazarov 89",
+        placeholder: "100$ yáki 2 000 000 swm, h.t.b.",
         required: true,
-        minLength: 5,
+        minLength: 2,
         maxLength: 200,
         value: formData.budget,
         onChange: (e) => handleInputChange("budget", e.target.value)

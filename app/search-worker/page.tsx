@@ -28,8 +28,6 @@ interface TelegramWindow extends Window {
   };
 }
 
-const telegramWindow = window as TelegramWindow;
-
 export default function SearchWorker() {
   const [formData, setFormData] = useState<FormData>({
     company: "",
@@ -47,6 +45,8 @@ export default function SearchWorker() {
   const [initData, setInitData] = useState<string | null>(null);
 
   useEffect(() => {
+    const telegramWindow = window as TelegramWindow;
+
     if (typeof window !== "undefined" && telegramWindow.Telegram?.WebApp) {
       setInitData(telegramWindow.Telegram.WebApp.initData || null);
     }
@@ -118,7 +118,7 @@ export default function SearchWorker() {
         type: "text",
         placeholder: "Bizler Group",
         required: true,
-        minLength: 2,
+        minLength: 4,
         maxLength: 50,
         pattern: "[A-Za-zА-Яа-яЁё0-9\\s]+",
         value: formData.company,
@@ -204,7 +204,7 @@ export default function SearchWorker() {
         type: "text",
         placeholder: "1000$, 5 000 000 swm, h.t.b.",
         required: true,
-        minLength: 5,
+        minLength: 2,
         maxLength: 200,
         value: formData.salary,
         onChange: (e) => handleInputChange("salary", e.target.value)
