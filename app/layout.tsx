@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
+import TelegramGuard from "@/components/TelegramGuard";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
@@ -35,7 +36,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system">
           <ReactQueryProvider>
             <Navbar />
-            {children}
+            <TelegramGuard>{children}</TelegramGuard>
           </ReactQueryProvider>
         </ThemeProvider>
       </body>
