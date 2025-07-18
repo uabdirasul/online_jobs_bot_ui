@@ -1,4 +1,6 @@
-import React from "react";
+import TelegramIcon from "@/public/telegram-logo.svg";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const isTelegramWebApp = () => {
   if (typeof window === "undefined") return false;
@@ -14,9 +16,9 @@ const isTelegramWebApp = () => {
 const TelegramGuard: React.FC<{ children: React.ReactNode }> = ({
   children
 }) => {
-  const [allowed, setAllowed] = React.useState(false);
+  const [allowed, setAllowed] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setAllowed(isTelegramWebApp());
   }, []);
 
@@ -24,27 +26,11 @@ const TelegramGuard: React.FC<{ children: React.ReactNode }> = ({
     return (
       <div className="flex items-center justify-center min-h-screen bg-background transition-colors">
         <div className="p-8 rounded-xl shadow-lg border border-border bg-white dark:bg-zinc-900 dark:border-zinc-800 text-center max-w-sm w-full">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 48 48"
-            className="mx-auto mb-4 h-12 w-12 text-blue-500 dark:text-blue-400"
-            fill="none"
-          >
-            <circle
-              cx="24"
-              cy="24"
-              r="24"
-              fill="currentColor"
-              fillOpacity="0.1"
-            />
-            <path
-              d="M12 24l24-8-6 24-6-8-8-2z"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="currentColor"
-              fillOpacity="0.3"
-            />
-          </svg>
+          <Image
+            src={TelegramIcon}
+            alt="Telegram Logo"
+            className="w-16 h-16 mx-auto mb-4"
+          />
           <h2 className="text-2xl font-bold mb-2 text-foreground">
             Telegram Only
           </h2>
